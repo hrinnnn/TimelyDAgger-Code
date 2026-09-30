@@ -14,7 +14,6 @@ Xin Liu<sup>1,6</sup> · Kangyao Huang<sup>1,6</sup> · Yu Luo<sup>1,6,*</sup> �
 
 [![Paper](https://img.shields.io/badge/Paper-arXiv%3A2609.33157-B31B1B?style=flat-square)](https://arxiv.org/abs/2609.33157)
 [![Project page](https://img.shields.io/badge/Project-Page-2C817A?style=flat-square)](https://seen-e.github.io/TimelyDagger/)
-[![Code website](https://img.shields.io/badge/Code-Website-3B7297?style=flat-square)](https://hrinnnn.github.io/TimelyDAgger-Code/)
 ![Python](https://img.shields.io/badge/Python-3.10%2B-4776A7?style=flat-square)
 [![License](https://img.shields.io/badge/License-MIT-64748B?style=flat-square)](LICENSE)
 
