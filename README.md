@@ -44,13 +44,13 @@ The example uses small synthetic arrays to show the API. It does not require a r
 
 ### Bridge-PCA: decide when to request help
 
-Fit a rank-\(r\) principal subspace to bridge features from in-distribution (ID) demonstrations. For a new bridge feature \(z_t\), the monitor computes the reconstruction residual
+Fit a rank-$r$ principal subspace to bridge features from in-distribution (ID) demonstrations. For a new bridge feature $z_t$, the monitor computes the reconstruction residual
 
-\[
+$$
 s_{\mathrm{BPCA}}(z_t)=\left\|(I-VV^\top)(z_t-\mu)\right\|_2.
-\]
+$$
 
-The initial threshold is the \((1-\alpha)\)-quantile of **per-rollout maximum scores** on separate successful ID calibration rollouts. The robot requests help when the current score **strictly exceeds** that threshold.
+The initial threshold is the $(1-\alpha)$-quantile of **per-rollout maximum scores** on separate successful ID calibration rollouts. The robot requests help when the current score **strictly exceeds** that threshold.
 
 ```python
 from timelydagger import BridgePCA
@@ -64,11 +64,11 @@ The caller extracts bridge features from a frozen VLA and uses the same feature 
 
 ### FTA: refine when future requests occur
 
-After expert takeover, FTA uses the expert's initial actions as timing feedback. It detects a corrective reversal by comparing motion immediately before and after takeover; it also checks whether frozen-policy predictions agree with expert actions at the same observations. A reversal takes priority over agreement. The resulting cue \(y_i\in\{+1,0,-1\}\) updates one global threshold:
+After expert takeover, FTA uses the expert's initial actions as timing feedback. It detects a corrective reversal by comparing motion immediately before and after takeover; it also checks whether frozen-policy predictions agree with expert actions at the same observations. A reversal takes priority over agreement. The resulting cue $y_i\in\{+1,0,-1\}$ updates one global threshold:
 
-\[
+$$
 \gamma_{i+1}=\gamma_i\exp(-\beta y_i).
-\]
+$$
 
 ```python
 from timelydagger import FeedbackGuidedThresholdAdaptation
@@ -88,7 +88,7 @@ feedback = fta.observe_intervention(
 request_help = monitor.requests_help(current_bridge_feature, fta.threshold)
 ```
 
-The default \(\beta=0.05\) changes the threshold by about 5% for a nonzero cue. This value and the action/motion tolerances in `fta.py` are starting settings for adapting the code to a new robot; **they are not the parameter values validated in the paper's experiments**. Pass motion vectors in one coordinate frame and action vectors in compatible units.
+The default $\beta=0.05$ changes the threshold by about 5% for a nonzero cue. This value and the action/motion tolerances in `fta.py` are starting settings for adapting the code to a new robot; **they are not the parameter values validated in the paper's experiments**. Pass motion vectors in one coordinate frame and action vectors in compatible units.
 
 ## Code layout
 
