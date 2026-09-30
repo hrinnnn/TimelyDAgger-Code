@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Minimal open-source Bridge-PCA and feedback-guided threshold adaptation code for TimelyDAgger.">
+  <title>TimelyDAgger · Method Code</title>
+  <style>
+    :root { color-scheme: light; --ink:#172c36; --muted:#50636b; --blue:#276f9d; --green:#087f70; --line:#dbe5e8; }
+    * { box-sizing:border-box; }
+    body { margin:0; font:17px/1.65 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color:var(--ink); background:#fff; }
+    main { max-width:850px; margin:auto; padding:56px 28px 80px; }
+    .eyebrow { color:var(--green); font-weight:700; letter-spacing:.12em; font-size:12px; text-transform:uppercase; }
+    h1 { font-size:clamp(36px,6vw,60px); line-height:1.1; letter-spacing:-.045em; margin:12px 0 18px; }
+    h2 { margin:46px 0 10px; font-size:26px; letter-spacing:-.025em; }
+    .lead { font-size:20px; color:var(--muted); max-width:720px; }
+    .links { display:flex; flex-wrap:wrap; gap:12px; margin:28px 0; }
+    .links a { padding:10px 17px; border:1px solid var(--blue); border-radius:7px; color:var(--blue); font-weight:650; text-decoration:none; }
+    .links a:first-child { color:#fff; background:var(--blue); }
+    .links a:hover,.links a:focus-visible { box-shadow:0 0 0 3px #cfe4f2; }
+    .rule { border-top:1px solid var(--line); margin:40px 0 0; }
+    code { background:#f1f5f6; padding:2px 5px; border-radius:3px; }
+    pre { background:#f5f8f9; padding:20px; border:1px solid var(--line); border-radius:8px; overflow-x:auto; font:14px/1.5 ui-monospace, Menlo, Consolas, monospace; }
+    pre code { padding:0; background:none; }
+    .equation { padding:16px 20px; border-left:3px solid var(--green); background:#f5f9f8; overflow-x:auto; font-family:Georgia,serif; }
+    .small,footer { font-size:14px; color:var(--muted); }
+    footer { border-top:1px solid var(--line); padding-top:20px; margin-top:50px; }
+  </style>
+</head>
+<body>
+<main>
+  <div class="eyebrow">Open-source method code</div>
+  <h1>TimelyDAgger</h1>
+  <p class="lead">Minimal, readable Python for Bridge-PCA monitoring and feedback-guided threshold adaptation. Bring your own frozen VLA features and expert intervention interface.</p>
+  <div class="links">
+    <a href="https://github.com/hrinnnn/TimelyDAgger-Code">View the code and README</a>
+    <a href="https://seen-e.github.io/TimelyDagger/">Research project page</a>
+    <a href="https://arxiv.org/abs/2609.33157">Paper</a>
+  </div>
+  <div class="rule"></div>
+  <h2>Bridge-PCA</h2>
+  <p>Fit a principal subspace to bridge features from in-distribution demonstrations. Monitor the distance of each new bridge feature from that subspace. Set the initial help threshold from the maximum score of each separate ID calibration rollout.</p>
+  <div class="equation">score(z) = ‖(I − VVᵀ)(z − μ)‖₂ &nbsp;&nbsp;→&nbsp;&nbsp; request help when score(z) &gt; γ</div>
+  <h2>Feedback-guided Threshold Adaptation</h2>
+  <p>Completed expert interventions provide a timing cue. Initial corrective reversal encourages an earlier request; policy–expert agreement without reversal allows a later request. A single threshold is updated for subsequent episodes.</p>
+  <div class="equation">γ<sub>i+1</sub> = γ<sub>i</sub> exp(−β y<sub>i</sub>), &nbsp; y<sub>i</sub> ∈ {+1, 0, −1}</div>
+  <p class="small">The repository uses β = 0.05 as an illustrative conservative default. Cue tolerances also need to be chosen for the target robot; they are not paper-validated constants.</p>
+  <h2>Try the mathematical core</h2>
+  <pre><code>git clone https://github.com/hrinnnn/TimelyDAgger-Code.git
+cd TimelyDAgger-Code
+python -m pip install -r requirements.txt
+python -m examples.minimal</code></pre>
+  <p>Only NumPy is required. The repository does not distribute checkpoints, datasets, a robot driver, or experimental pipelines.</p>
+  <footer>TimelyDAgger method code · MIT license · <a href="https://github.com/hrinnnn/TimelyDAgger-Code">GitHub repository</a></footer>
+</main>
+</body>
+</html>
