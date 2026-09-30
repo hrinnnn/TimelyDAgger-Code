@@ -4,7 +4,13 @@
 
 ### Timing-Aware Expert Querying for VLA Policy Improvement
 
-Zhixuan Zhao · Peiyan Li · Enhao Zhang · Yueran Tao · Hao Wang · Chenghao Yue · Lei Lv · Wentao Zhao · Jiahao Chen · Xin Liu · Kangyao Huang · Yu Luo · Huaping Liu
+Zhixuan Zhao<sup>1,6,†</sup> · Peiyan Li<sup>1,6,†</sup> · Enhao Zhang<sup>2,6</sup> · Yueran Tao<sup>1,6</sup><br>
+Hao Wang<sup>3,6</sup> · Chenghao Yue<sup>1,6</sup> · Lei Lv<sup>4,6</sup> · Wentao Zhao<sup>1,6</sup> · Jiahao Chen<sup>5,6</sup><br>
+Xin Liu<sup>1,6</sup> · Kangyao Huang<sup>1,6</sup> · Yu Luo<sup>1,6,*</sup> · Huaping Liu<sup>1,6,*</sup>
+
+<sub><sup>1</sup>Tsinghua University &nbsp; <sup>2</sup>Imperial College London &nbsp; <sup>3</sup>Dalian University of Technology<br>
+<sup>4</sup>Tongji University &nbsp; <sup>5</sup>Peking University &nbsp; <sup>6</sup>SEEN·E Robotics</sub><br>
+<sub>† Equal contribution &nbsp;&nbsp; * Corresponding authors</sub>
 
 [![Paper](https://img.shields.io/badge/Paper-arXiv%3A2609.33157-B31B1B?style=flat-square)](https://arxiv.org/abs/2609.33157)
 [![Project page](https://img.shields.io/badge/Project-Page-2C817A?style=flat-square)](https://seen-e.github.io/TimelyDagger/)
